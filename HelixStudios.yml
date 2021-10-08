@@ -11,6 +11,12 @@ performerByURL:
       - https://www.helixstudios.com/model/
     scraper: performerScraper
 
+movieByURL:
+  - action: scrapeXPath
+    url:
+      - https://www.helixstudios.com/movie/
+    scraper: movieScraper
+
 xPathScrapers:
   sceneScraper:
     common:
@@ -87,4 +93,17 @@ xPathScrapers:
           - replace:
               - regex: $
                 with: " "
-# Last Updated June 04, 2021
+
+  movieScraper:
+    movie:
+      Name: //div[@class="movie-header"]/h1/text()
+      Duration: //span[@class="info-item duration"]/text()
+      Date:
+      Director: //span[@class="info-item director"]/text()
+      Synopsis: //div[@class="description-content description"]/p/text()
+      Studio:
+        Name:
+          fixed: Helix
+      FrontImage: //a[contains(@href, 'front_xlarge')]/@href
+      BackImage: //a[contains(@href, 'back_xlarge')]/@href
+# Last Updated October 08, 2021
