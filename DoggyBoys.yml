@@ -1,0 +1,50 @@
+name: "DoggyBoys"
+sceneByURL:
+  - action: scrapeXPath
+    url:
+      - https://doggyboys.com/videos
+    scraper: sceneScraper
+
+performerByURL:
+  - action: scrapeXPath
+    url:
+      - https://doggyboys.com/models/
+    scraper: performerScraper
+
+xPathScrapers:
+  sceneScraper:
+    scene:
+      Title: //h1[@class="headline__title"]
+      Date:
+        selector: //div[1][@class="tools__item"]/span[2]/text()
+        postProcess:
+          - parseDate: 2 January 2006
+      Studio:
+        Name:
+          fixed: DoggyBoys
+      Performers:
+        Name:
+          selector: //span[text()="Featuring:"]/following-sibling::a/text()
+      Image: //meta[@name="twitter:image"]/@content
+      Details:
+        selector: //p[@class="watch__description"]/text()
+
+  performerScraper:
+    performer:
+      Name: //h1[@class="profile__title"]/text()
+      Gender:
+        fixed: Male
+      Height: //span[text()="Height:"]/following-sibling::span/text()
+      Weight: 
+        selector: //span[text()="Weight:"]/following-sibling::span/text()
+        postProcess:
+          - replace:
+            - regex: kg
+              with: ""
+      EyeColor: //span[text()="Eye color:"]/following-sibling::span/text()
+      HairColor: //span[text()="Hair color:"]/following-sibling::span/text()
+      Measurements: //span[text()="Cock size:"]/following-sibling::span/text()
+      Image: //img[@class="profile__img"]/@src
+      Details: //p[@class="profile__description"]/text()
+
+# Last Updated October 07, 2021
