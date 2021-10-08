@@ -1,0 +1,14 @@
+name: "WilliamHiggins"
+sceneByURL:
+    - url:
+        - https://www.williamhiggins.com/set/detail/
+        - www.str8hell.com/set/detail/
+        - www.swnude.com/set/detail/
+        - www.ambushmassage.com/set/detail/
+        - www.cfnmeu.com/set/detail/
+        - www.malefeet4u.com/set/detail/
+      action: script
+      script:
+        - python
+        - WilliamHiggins.py
+        - scene
