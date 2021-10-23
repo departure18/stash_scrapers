@@ -49,6 +49,12 @@ xPathScrapers:
       Performers:
         Name:
           selector: //div[@class="video-cast"]//a/@title
+        URL:
+          selector: //div[@class="video-cast"]//a/@href
+          postProcess:
+            - replace:
+              - regex: '(.*)'
+                with: "https://www.helixstudios.com$1"
       Image:
         selector: //video/@poster
       Studio:
@@ -106,4 +112,4 @@ xPathScrapers:
           fixed: Helix
       FrontImage: //a[contains(@href, 'front_xlarge')]/@href
       BackImage: //a[contains(@href, 'back_xlarge')]/@href
-# Last Updated October 08, 2021
+# Last Updated October 23, 2021
