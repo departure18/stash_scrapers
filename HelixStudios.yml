@@ -106,7 +106,15 @@ xPathScrapers:
       Duration: //span[@class="info-item duration"]/text()
       Date:
       Director: //span[@class="info-item director"]/text()
-      Synopsis: //div[@class="description-content description"]/p/text()
+      Synopsis: 
+        selector: //div[contains(concat(' ',normalize-space(@class),' '),' description-content ')]/p/text()
+        concat: "#LINEBREAK#"
+        postProcess:
+          - replace:
+              - regex: "___.*"
+                with:
+              - regex: "#LINEBREAK#"
+                with: "\n\n"
       Studio:
         Name:
           fixed: Helix
